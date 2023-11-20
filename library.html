@@ -7,6 +7,14 @@
     <title>Document</title>
 </head>
 <body>
+    <form id="addBookForm" style="display: none;">
+        <ul>
+            <li><input type="text" id="title" placeholder="Title" required></li>
+            <li><input type="text" id="author" placeholder="Author" required></li>
+            <li><input type="text" id="year" placeholder="Year" required></li>
+            <li><button id="submitBook">Add</button></li>
+        </ul>
+    </form>
     <div class="container">
         <div class="header">
             <div class="logo">
@@ -20,7 +28,6 @@
         </div>
         <div class="content">
             <div class="booklist">
-
             </div>
         </div>
     </div>
