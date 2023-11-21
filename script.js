@@ -83,9 +83,9 @@ function renderList() {
         bookCard.classList.add('bookCard');
         bookCard.setAttribute('book-id', book.id);
         bookCard.innerHTML = `
-                            <h2>${book.title}</h2>
-                            <h2>${book.author}</h2>
-                            <h2>${book.year}</h2>
+                            <h3>${book.title}</h3>
+                            <h3>${book.author}</h3>
+                            <h3>${book.year}</h3>
                             <button class="read_btn"">${book.read ? 'Unread' : 'Read'}</button>
                             <button class="delete_btn"">Delete</button>
         `;
@@ -112,9 +112,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     submitBookBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        addBook();
-        addBookForm.style.display = 'none'; 
-        renderList(); 
+        if (validateForm()) {
+            addBook();
+            addBookForm.style.display = 'none';
+            renderList();
+        }
     });
+
+    function validateForm() {
+        const titleInput = document.querySelector('#title');
+        const authorInput = document.querySelector('#author');
+        const yearInput = document.querySelector('#year');
+
+        if (titleInput.value.trim() === '' || authorInput.value.trim() === '' || yearInput.value.trim() === '') {
+            alert('Please fill in all fields');
+            return false;
+        }
+        return true;
+    }
+
     renderList();
 });
